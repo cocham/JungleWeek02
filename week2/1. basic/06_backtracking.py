@@ -119,9 +119,19 @@ def combinations(n: int, k: int) -> list:
     Returns:
         모든 조합을 담은 리스트(예: [[1,2], [1,3], ...])
     """
-    result = []  # 완성된 조합을 모아 둘 곳
+    result = [] # 완성된 조합을 모아 둘 곳
 
     def backtrack(start: int, current_combination: list) -> None:
+        if (len(current_combination)) == k:
+            result.append(list(current_combination))
+            return
+
+        for num in range(start, n + 1):
+            current_combination.append(num)
+            backtrack(num + 1, current_combination)
+            current_combination.pop()
+        
+
         """
         재귀(백트래킹) 헬퍼 함수.
 
@@ -144,7 +154,6 @@ def combinations(n: int, k: int) -> list:
         # if len(current_combination) == ...:
         #     result.append(...)
         #     return
-        pass  
 
         # ──────────────────────────────────────────────────────────────────
         # [Level 2] 가지치기 반복문
@@ -154,7 +163,6 @@ def combinations(n: int, k: int) -> list:
         # - 반복문 변수 이름은 num 으로 추천 (의미: "이번에 고를 숫자").
         #
         # TODO(Level 2): 아래 한 줄을 작성하세요.
-        pass
 
             # ──────────────────────────────────────────────────────────────
             # [Level 3] 백트래킹 3단계
