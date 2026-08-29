@@ -38,14 +38,23 @@ def is_valid_parentheses(s):
     stack = []
     
     # TODO: 문자열의 각 문자를 순회
+    for c in s:
+        if (c == "("):
+            stack.append(c)
+        elif (c == ")"):
+            if (len(stack) == 0):
+                return False
+            stack.pop()
+
+    if not len(stack) == 0:
+        return False
+    
+    return True
+
     ## : 여는 괄호 '('면 스택에 추가
     ## : 닫는 괄호 ')'면
     ## 스택이 비어있으면 False 반환
     ## 아니면 스택에서 pop
-    pass
-    
-    # TODO: 반복이 끝나면 스택이 비어있는지 확인
-    pass
 
 # 테스트 케이스
 if __name__ == "__main__":

@@ -35,7 +35,7 @@ def factorial(n):
     # TODO: base case를 작성하세요
     # n이 0이거나 1이면 1을 반환
     if n == 0:
-        return 0
+        return 1
     if n == 1:
         return 1
     
