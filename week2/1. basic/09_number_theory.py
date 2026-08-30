@@ -93,6 +93,8 @@ def extended_gcd(a, b):
     # base case: b가 0이면 (a, 1, 0) 반환    
     # recursive case
     # 역추적하며 x, y 계산
+    # 이전 단계의 x, y가 다음 단계의 x1, y1이 되는 것
+    # GCD(15,9) => 3x + 0y = 3에서 x=1, y=0 → 이것이 x1=1, y1=0으로 (6,3)에 전달 → x=y1=0, y=x1-(a//b)y1=1 → 6x+3y=3에서 x=0,y=1
     if (b == 0):
         return (a, 1, 0)
 
