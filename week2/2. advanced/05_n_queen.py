@@ -61,15 +61,31 @@ def n_queens(n: int) -> int:
     1 <= N <= 8 범위에서 동작하면 충분합니다.
     """
     # TODO: 백트래킹으로 가능한 배치의 수를 반환하세요.
-    # 권장 구조:
-    #   cols = [0] * n
-    #   count = 0
-    #   def place(row):
-    #       ...
-    #   place(0)
-    #   return count
-    pass
+    cols = [0] * n
+    count = 0
 
+    def put(col):
+      nonlocal count
+
+      if (col == n): # 모든 열을 확인
+        count += 1
+        return
+
+      for row in range(n):
+        if (isSafe(col, row)):
+          cols[col] = row #몇 열에 몇 행인지 저장
+          put(col + 1)
+
+    def isSafe(col, row):
+        for i in range(col):
+          if (cols[i] == row):
+              return False 
+          if (abs(row - cols[i]) == abs(col - i)): #대각선 = 가로이동 = 세로이동 
+              return False
+        return True
+
+    put(0)
+    return count
 
 if __name__ == "__main__":
     print("[테스트] N=1 ~ N=8 에 대한 가능한 배치의 수")
